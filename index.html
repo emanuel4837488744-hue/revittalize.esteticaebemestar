@@ -1001,7 +1001,7 @@
                 <div class="instagram-card">
                     <div class="instagram-header">
                         <div class="instagram-profile">
-                           <img src="imagemperfildoinstagram" alt="Perfil">
+                           <img src="imagemperfildoinstgram.jpg" alt="Perfil">
 </div>
                         <div class="instagram-username">@revittalize.esteticaebemestar</div>
                     </div>
@@ -1254,21 +1254,40 @@
             });
         });
         
-        // Form submission
-        const bookingForm = document.getElementById('bookingForm');
-        bookingForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const procedure = document.getElementById('procedure').options[document.getElementById('procedure').selectedIndex].text;
-            
-            // Show success message
-            alert(`Obrigado, ${name}! Sua solicitação de agendamento para "${procedure}" foi recebida. Entraremos em contato em breve pelo WhatsApp para confirmar seu horário.`);
-            
-            // Reset form
-            bookingForm.reset();
-        });
+       bookingForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const whatsapp = document.getElementById('whatsapp').value;
+    const date = document.getElementById('date').value;
+    const shift = document.getElementById('shift').value;
+    const procedure = document.getElementById('procedure').options[document.getElementById('procedure').selectedIndex].text;
+    const message = document.getElementById('message').value;
+
+    const texto = `
+📅 *Novo Agendamento - Revittalize*
+
+👤 Nome: ${name}
+📧 Email: ${email}
+📱 WhatsApp: ${whatsapp}
+
+💉 Procedimento: ${procedure}
+📆 Data: ${date}
+⏰ Turno: ${shift}
+
+📝 Mensagem:
+${message || 'Não informado'}
+    `;
+
+    const numeroClinica = "5561985565294"; // seu número aqui
+
+    const url = `https://wa.me/${numeroClinica}?text=${encodeURIComponent(texto)}`;
+
+    window.open(url, '_blank');
+
+    bookingForm.reset();
+});
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
