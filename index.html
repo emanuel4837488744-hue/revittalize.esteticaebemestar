@@ -342,17 +342,20 @@
         }
         
         .instagram-profile {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #bc1888;
-        }
-        
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden; /* ESSENCIAL */
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+        .instagram-profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
         .instagram-username {
             font-weight: 600;
             font-size: 1.1rem;
